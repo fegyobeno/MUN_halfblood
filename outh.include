@@ -1,0 +1,17 @@
+<?php
+session_start();
+?>
+
+<html>              
+
+<?php if (!$_SESSION["id"] ){ 
+
+?>
+	<H1>YOU ARE NOT LOGGED IN!</H1>
+	<A HREF="index.php" TARGET=_top> Click here to log in.</A>
+        
+        <?php
+	exit();
+}
+?>
+</html>
