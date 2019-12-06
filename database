@@ -1,0 +1,159 @@
+ <?php 
+
+  $connection = mysqli_connect("remotemysql.com","QThHxJOKo8","6gAhstQfGc","QThHxJOKo8");
+        if (!$connection) {
+          die("Connection failed: " . mysqli_connect_error());
+        }
+
+$command = "DROP TABLE `War`;";
+
+$query = mysqli_query($connection,$command);
+if (!$query) {
+	die("Query failed: " .mysqli_error($connection) );
+}
+
+echo "database dropped";
+
+$command = "
+CREATE TABLE `War` (
+  `Construction` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Cost` int(20) NOT NULL,
+  `Timetaken` int(20) NOT NULL,
+  `Construction_id` int(2) NOT NULL,
+  `war_group` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
+
+$query = mysqli_query($connection,$command);
+if (!$query) {
+	die("Query failed: " .mysqli_error($connection) );
+}
+
+echo "database created";
+
+$command = "
+INSERT INTO `War` (`Construction`,  `Cost`, `Timetaken`, `Construction_id`, `war_group`) VALUES
+('Assembling the vacuum chamber',  1000, 10, 1, 1),
+('Preparing a high pressure vacuum pump',  100, 9, 2, 1),
+('Building the inner grid',  1000, 8, 3, 1),
+('Assembling the Deuterium system',  1000, 7, 4, 1),
+('Connencting to high voltage',  1000, 6, 5, 1),
+('Setting up neutron detection',  1000, 5, 6, 1),
+('Firing up',  1000, 4, 7, 1),
+('Mining Uranium',  1000, 3, 1, 2),
+('Separating the isotopes',  1000, 3, 2, 2),
+('Separating uranium-235 from uranium-238',  1000, 3, 3, 2),
+('Enriching',  1000, 3, 4, 2),
+('Mining Uranium',  1000, 3, 5, 2),
+('Manufacturing',  1000, 3, 6, 2),
+('Designing the blueprint of the system',  1000, 5, 1, 3),
+('Building the base structure',  1000, 3, 2, 3),
+('Base testing with different voltages',  1000, 7, 3, 3),
+('Stimulating the qbits',  1000, 4, 4, 3),
+('Programming the surface code',  1000, 5, 5, 3),
+('Debugging the system',  1000, 5, 5, 3),
+('Recruting soldiers',  1000, 5, 1, 4),
+('Building tanks',  1000, 5, 2, 4),
+('Constructing airplanes',  1000, 5, 3, 4),
+('Building ships',  1000, 10, 4, 4);";
+
+$query = mysqli_query($connection,$command);
+if (!$query) {
+	die("Query failed: " .mysqli_error($connection) );
+}
+
+echo "data uploaded <br>";
+
+$command = "DROP TABLE `War_Country`;";
+
+$query = mysqli_query($connection,$command);
+if (!$query) {
+  die("Query failed: " .mysqli_error($connection) );
+}
+
+echo "W-c database dropped";
+
+$command = "
+CREATE TABLE `War_Country` (
+  `username` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `construction_id` int(2) NOT NULL,
+  `completion_time` int(12) NOT NULL,
+  `war_group` int(2) NOT NULL,
+  `quantity` int(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+";
+
+$query = mysqli_query($connection,$command);
+if (!$query) {
+  die("Query failed: " .mysqli_error($connection) );
+}
+echo "W-c database created";
+
+$command = "
+INSERT INTO `War_Country` (`username`,  `construction_id`, `completion_time`, `war_group`, `quantity`) VALUES
+('USA',  1, 1, 4, 15),
+('USA',  2, 1, 4, 13),
+('USA',  3, 1, 4, 11),
+('USA',  4, 1, 4, 10),
+('USA',  1, 1, 4, 15),
+('USA',  2, 1, 4, 13),
+('USA',  3, 1, 4, 11),
+('USA',  4, 1, 4, 10),
+('USA',  1, 1, 4, 15),
+('USA',  2, 1, 4, 13),
+('USA',  3, 1, 4, 11),
+('USA',  4, 1, 4, 10),
+('USA',  1, 1, 4, 15),
+('USA',  2, 1, 4, 13),
+('USA',  3, 1, 4, 11),
+('USA',  4, 1, 4, 10),
+('USA',  1, 1, 4, 15),
+('USA',  2, 1, 4, 13),
+('USA',  3, 1, 4, 11),
+('USA',  4, 1, 4, 10),
+('USA',  1, 1, 4, 15),
+('USA',  2, 1, 4, 13),
+('USA',  3, 1, 4, 11),
+('USA',  4, 1, 4, 10),
+('USA',  1, 1, 4, 15),
+('USA',  2, 1, 4, 13),
+('USA',  3, 1, 4, 11),
+('USA',  4, 1, 4, 10),
+('USA',  1, 1, 4, 15),
+('USA',  2, 1, 4, 13),
+('USA',  3, 1, 4, 11),
+('USA',  4, 1, 4, 10),
+('USA',  1, 1, 4, 15),
+('USA',  2, 1, 4, 13),
+('USA',  3, 1, 4, 11),
+('USA',  4, 1, 4, 10),
+('USA',  1, 1, 4, 15),
+('USA',  2, 1, 4, 13),
+('USA',  3, 1, 4, 11),
+('USA',  4, 1, 4, 10),
+('USA',  1, 1, 4, 15),
+('USA',  2, 1, 4, 13),
+('USA',  3, 1, 4, 11),
+('USA',  4, 1, 4, 10),
+('USA',  1, 1, 4, 15),
+('USA',  2, 1, 4, 13),
+('USA',  3, 1, 4, 11),
+('USA',  4, 1, 4, 10),
+('USA',  1, 1, 4, 15),
+('USA',  2, 1, 4, 13),
+('USA',  3, 1, 4, 11),
+('USA',  4, 1, 4, 10),
+('USA',  1, 1, 4, 15),
+('USA',  2, 1, 4, 13),
+('USA',  3, 1, 4, 11),
+('USA',  4, 1, 4, 10),
+
+
+
+;";
+
+$query = mysqli_query($connection,$command);
+if (!$query) {
+  die("Query failed: " .mysqli_error($connection) );
+}
+echo "W-c database inserted";
+mysqli_close($connection);
